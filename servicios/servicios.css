@@ -1,0 +1,13 @@
+/* servicios/servicios.css */
+
+#tab-servicios {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#tab-servicios h2 {
+  border-bottom: 3px solid var(--color-verde-mf);
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+}

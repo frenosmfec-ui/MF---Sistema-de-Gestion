@@ -1,0 +1,34 @@
+<section id="tab-servicios" class="tab-panel active">
+  <h2>Registro de Servicio</h2>
+  
+  <form id="form-servicio">
+    <!-- Sección 1: Ingreso de Vehículo (Desplegable) -->
+    <div id="seccion-ingreso-container"></div>
+    
+    <!-- Sección 2: Motivo de Visita (Desplegable) -->
+    <div id="seccion-motivo-container"></div>
+    
+    <button type="submit" class="btn-primary" style="margin-top:1rem;">
+      💾 Guardar Registro en la Nube
+    </button>
+  </form>
+
+  <!-- Tabla para ver los registros guardados -->
+  <div class="table-wrap" style="margin-top: 2rem;">
+    <h3>Servicios Registrados</h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Cliente</th>
+          <th>Vehículo</th>
+          <th>Motivo</th>
+          <th>Eje</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-servicios">
+        <tr><td colspan="5" style="text-align:center;">Cargando datos...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>

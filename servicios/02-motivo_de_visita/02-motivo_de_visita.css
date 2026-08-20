@@ -1,0 +1,21 @@
+/* servicios/02-motivo_de_visita/02-motivo_de_visita.css */
+
+#form-motivo-visita .form-full {
+  grid-column: 1 / -1;
+}
+
+#form-motivo-visita textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#form-motivo-visita .checkbox-group {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+#servSintomaOtroDetalle {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border: 2px solid var(--color-verde-mf);
+  border-radius: 6px;
+}

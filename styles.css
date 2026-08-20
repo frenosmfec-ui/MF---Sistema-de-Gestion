@@ -1,0 +1,1248 @@
+/* =========================================================
+   MF - Mantenimiento en Frenos
+   Sistema visual / CSS base
+   ========================================================= */
+
+/* =========================================================
+   1. VARIABLES DE MARCA
+   ========================================================= */
+
+:root {
+  /* Colores oficiales */
+  --color-grafito: #171A1D;
+  --color-blanco: #FFFFFF;
+  --color-verde-mf: #25D366;
+  --color-verde-oscuro: #128C7E;
+  --color-gris-claro: #E9ECEF;
+  --color-gris-medio: #6B7280;
+
+  /* Colores complementarios */
+  --color-gris-suave: #F5F7F8;
+  --color-gris-borde: #D7DCE0;
+  --color-negro: #0D0F10;
+  --color-error: #DC2626;
+  --color-warning: #D97706;
+  --color-success: #15803D;
+
+  /* Tipografías */
+  --font-primary: "DM Sans", sans-serif;
+  --font-mono: "Space Mono", monospace;
+
+  /* Bordes */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  /* Sombras */
+  --shadow-sm:
+    0 2px 6px rgba(23, 26, 29, 0.08);
+
+  --shadow-md:
+    0 6px 20px rgba(23, 26, 29, 0.12);
+
+  --shadow-lg:
+    0 12px 40px rgba(23, 26, 29, 0.16);
+
+  /* Transiciones */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+
+  /* Layout */
+  --container-width: 1200px;
+}
+
+
+/* =========================================================
+   2. RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--color-gris-claro);
+  color: var(--color-grafito);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   3. CONTENEDOR
+   ========================================================= */
+
+.container {
+  width: min(
+    calc(100% - 2rem),
+    var(--container-width)
+  );
+  margin-inline: auto;
+}
+
+
+/* =========================================================
+   4. TIPOGRAFÍA
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-grafito);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+}
+
+.text-muted {
+  color: var(--color-gris-medio);
+}
+
+.text-brand {
+  color: var(--color-verde-oscuro);
+}
+
+.text-white {
+  color: var(--color-blanco);
+}
+
+
+/* =========================================================
+   5. MARCA MF
+   ========================================================= */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.brand-mf {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.brand-mf .m {
+  color: var(--color-blanco);
+}
+
+.brand-mf .f {
+  color: var(--color-verde-mf);
+}
+
+.brand-description {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   6. HEADER
+   ========================================================= */
+
+.site-header {
+  background: var(--color-grafito);
+  color: var(--color-blanco);
+  border-bottom: 3px solid var(--color-verde-mf);
+}
+
+.site-header-inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+
+/* =========================================================
+   7. HERO / IDENTIDAD
+   ========================================================= */
+
+.hero {
+  background: var(--color-grafito);
+  color: var(--color-blanco);
+  padding: 5rem 0;
+}
+
+.hero h1 {
+  color: var(--color-blanco);
+  max-width: 800px;
+}
+
+.hero h1 span {
+  color: var(--color-verde-mf);
+}
+
+.hero p {
+  max-width: 680px;
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+}
+
+
+/* =========================================================
+   8. TARJETAS
+   ========================================================= */
+
+.card {
+  background: var(--color-blanco);
+  border: 1px solid var(--color-gris-borde);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.card-title {
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  color: var(--color-gris-medio);
+}
+
+
+/* =========================================================
+   9. FORMULARIOS
+   ========================================================= */
+
+.form-registro {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--color-blanco);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-grafito);
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 2px solid var(--color-gris-borde);
+  border-radius: var(--radius-sm);
+  background: var(--color-blanco);
+  color: var(--color-grafito);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.form-group textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--color-gris-medio);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-verde-oscuro);
+  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.15);
+}
+
+.form-full {
+  grid-column: 1 / -1;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+
+/* =========================================================
+   10. BOTONES
+   ========================================================= */
+
+/* Botón principal */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  background: var(--color-verde-mf);
+  color: var(--color-grafito);
+
+  padding: 0.9rem 1.5rem;
+
+  border-radius: var(--radius-sm);
+
+  font-weight: 700;
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background: #20C45F;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.25);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  background: var(--color-gris-medio);
+  color: var(--color-blanco);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* Botón secundario */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  color: var(--color-grafito);
+
+  padding: 0.9rem 1.5rem;
+
+  border: 2px solid var(--color-grafito);
+  border-radius: var(--radius-sm);
+
+  font-weight: 700;
+  cursor: pointer;
+
+  transition:
+    all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: var(--color-grafito);
+  color: var(--color-blanco);
+}
+
+
+/* Botón oscuro */
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--color-grafito);
+  color: var(--color-blanco);
+
+  padding: 0.9rem 1.5rem;
+
+  border-radius: var(--radius-sm);
+
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: all var(--transition-fast);
+}
+
+.btn-dark:hover {
+  background: var(--color-negro);
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   11. WHATSAPP
+   ========================================================= */
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  background: var(--color-verde-mf);
+  color: var(--color-grafito);
+
+  padding: 0.85rem 1.25rem;
+  border-radius: 999px;
+
+  font-weight: 700;
+
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 18px rgba(37, 211, 102, 0.3);
+}
+
+
+/* =========================================================
+   12. TABLAS
+   ========================================================= */
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 2rem;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-blanco);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.data-table thead {
+  background: var(--color-grafito);
+  color: var(--color-blanco);
+}
+
+.data-table th,
+.data-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-gris-borde);
+}
+
+.data-table th {
+  font-weight: 700;
+}
+
+.data-table tbody tr {
+  transition: background var(--transition-fast);
+}
+
+.data-table tbody tr:hover {
+  background: var(--color-gris-suave);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================================
+   13. ACORDEÓN
+   ========================================================= */
+
+.section-accordion {
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--color-gris-borde);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-blanco);
+}
+
+.section-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  background: var(--color-grafito);
+  color: var(--color-blanco);
+
+  padding: 1rem 1.5rem;
+
+  cursor: pointer;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  transition: background var(--transition-fast);
+  user-select: none;
+}
+
+.section-accordion-header:hover {
+  background: var(--color-verde-oscuro);
+}
+
+.section-accordion-header .toggle-icon {
+  font-size: 1.25rem;
+  transition: transform var(--transition-base);
+}
+
+.section-accordion.active
+.section-accordion-header
+.toggle-icon {
+  transform: rotate(180deg);
+}
+
+.section-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+
+  padding: 0 1.5rem;
+
+  transition:
+    max-height 0.3s ease,
+    padding 0.3s ease;
+}
+
+.section-accordion.active
+.section-accordion-content {
+  max-height: 2000px;
+  padding: 1.5rem;
+}
+
+
+/* =========================================================
+   14. CHECKBOXES
+   ========================================================= */
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(200px, 1fr));
+
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  padding: 0.85rem;
+
+  border: 2px solid var(--color-gris-borde);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-blanco);
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.checkbox-item:hover {
+  background: var(--color-gris-suave);
+  border-color: var(--color-verde-mf);
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-verde-mf);
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   15. ALERTAS / ESTADOS
+   ========================================================= */
+
+.alert {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.alert-success {
+  background: #DCFCE7;
+  color: var(--color-success);
+}
+
+.alert-warning {
+  background: #FEF3C7;
+  color: var(--color-warning);
+}
+
+.alert-error {
+  background: #FEE2E2;
+  color: var(--color-error);
+}
+
+
+/* =========================================================
+   16. BADGES
+   ========================================================= */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0.3rem 0.7rem;
+
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.badge-brand {
+  background: rgba(37, 211, 102, 0.15);
+  color: var(--color-verde-oscuro);
+}
+
+.badge-dark {
+  background: var(--color-grafito);
+  color: var(--color-blanco);
+}
+
+
+/* =========================================================
+   17. TARJETAS DE SERVICIO
+   ========================================================= */
+
+.service-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.service-card {
+  background: var(--color-blanco);
+  border: 1px solid var(--color-gris-borde);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-verde-mf);
+  box-shadow: var(--shadow-md);
+}
+
+.service-card-icon {
+  width: 52px;
+  height: 52px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 1rem;
+
+  background: rgba(37, 211, 102, 0.12);
+  color: var(--color-verde-oscuro);
+
+  border-radius: var(--radius-md);
+
+  font-size: 1.5rem;
+}
+
+
+/* =========================================================
+   18. SECCIÓN OSCURA
+   ========================================================= */
+
+.section-dark {
+  background: var(--color-grafito);
+  color: var(--color-blanco);
+}
+
+.section-dark h2,
+.section-dark h3 {
+  color: var(--color-blanco);
+}
+
+.section-dark p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+
+/* =========================================================
+   19. UTILIDADES
+   ========================================================= */
+
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 0.5rem;
+}
+
+.mt-2 {
+  margin-top: 1rem;
+}
+
+.mt-3 {
+  margin-top: 1.5rem;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
+
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* =========================================================
+   20. FOOTER
+   ========================================================= */
+
+.site-footer {
+  background: var(--color-negro);
+  color: var(--color-blanco);
+  padding: 3rem 0;
+}
+
+.site-footer p {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+
+/* =========================================================
+   21. RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 992px) {
+  .service-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header-inner {
+    min-height: 68px;
+  }
+
+  .hero {
+    padding: 3.5rem 0;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-registro {
+    padding: 1.25rem;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: min(
+      calc(100% - 1.25rem),
+      var(--container-width)
+    );
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-dark,
+  .btn-whatsapp {
+    width: 100%;
+  }
+
+  .checkbox-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   22. REDUCIR ANIMACIONES SI EL USUARIO LO PREFIERE
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+/* =========================================================
+   23. APP HEADER - Basado en fachada MF
+   ========================================================= */
+
+.app-header {
+  background: var(--color-grafito);
+  color: var(--color-blanco);
+  border-bottom: 4px solid var(--color-verde-mf);
+  position: relative;
+  z-index: 200;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header-inner {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.logo-block {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Logo SVG mejorado */
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.logo-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Título MF con M blanca y F verde */
+.app-title {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.app-title .m {
+  color: var(--color-blanco);
+}
+
+.app-title .f {
+  color: var(--color-verde-mf);
+  text-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+}
+
+/* Separador vertical verde */
+.title-separator {
+  width: 3px;
+  height: 40px;
+  background: var(--color-verde-mf);
+  margin: 0 1rem;
+  border-radius: 2px;
+}
+
+/* Texto principal del negocio */
+.app-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.app-brand-main {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--color-blanco);
+}
+
+.app-brand-main .highlight {
+  color: var(--color-verde-mf);
+  text-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+}
+
+.app-subtitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 0.25rem;
+}
+
+/* Meta info (fecha y versión) */
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.meta-date {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-verde-mf);
+}
+
+.meta-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--color-verde-mf);
+  color: var(--color-grafito);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+}
+
+
+/* =========================================================
+   24. NAVEGACIÓN POR PESTAÑAS (TABS) - Estilo Fachada
+   ========================================================= */
+
+.tab-nav {
+  background: var(--color-blanco);
+  border-bottom: 3px solid var(--color-gris-borde);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Banda blanca con separadores (como en la fachada) */
+.tab-nav-inner {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tab-nav-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  
+  background: transparent;
+  color: var(--color-gris-medio);
+  
+  padding: 1.1rem 1.5rem;
+  border-right: 1px solid var(--color-gris-borde);
+  border-bottom: 3px solid transparent;
+  
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+  
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.tab-btn:last-child {
+  border-right: none;
+}
+
+.tab-btn:hover {
+  color: var(--color-grafito);
+  background: var(--color-gris-suave);
+}
+
+.tab-btn.active {
+  color: var(--color-verde-oscuro);
+  border-bottom-color: var(--color-verde-mf);
+  background: rgba(37, 211, 102, 0.08);
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-verde-mf);
+  box-shadow: 0 -2px 8px rgba(37, 211, 102, 0.4);
+}
+
+.tab-icon {
+  font-size: 1.2rem;
+  filter: grayscale(100%);
+  transition: filter var(--transition-fast);
+}
+
+.tab-btn.active .tab-icon {
+  filter: grayscale(0%);
+}
+
+
+/* =========================================================
+   25. CONTENIDO PRINCIPAL (MAIN)
+   ========================================================= */
+
+.app-main {
+  max-width: var(--container-width);
+  margin: 2rem auto;
+  padding: 0 1.5rem 4rem;
+  min-height: calc(100vh - 200px);
+  background: var(--color-gris-suave);
+  border-radius: var(--radius-lg);
+}
+
+/* Animación suave al cambiar de pestaña */
+.tab-panel {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* =========================================================
+   26. WHATSAPP FLOTANTE (Basado en fachada)
+   ========================================================= */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  
+  background: var(--color-verde-mf);
+  color: var(--color-grafito);
+  
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  
+  font-weight: 700;
+  font-size: 0.95rem;
+  
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-float .icon {
+  font-size: 1.5rem;
+}
+
+
+/* =========================================================
+   27. RESPONSIVE PARA HEADER Y NAV
+   ========================================================= */
+
+@media (max-width: 992px) {
+  .header-inner {
+    flex-wrap: wrap;
+  }
+  
+  .logo-block {
+    flex: 1;
+  }
+  
+  .app-title {
+    font-size: 1.75rem;
+  }
+  
+  .app-brand-text {
+    display: none; /* Ocultar en tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .logo-block {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .app-title {
+    font-size: 1.5rem;
+  }
+  
+  .title-separator {
+    display: none;
+  }
+
+  .header-meta {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .tab-nav-inner {
+    padding: 0 1rem;
+  }
+
+  .tab-btn {
+    padding: 0.9rem 1.1rem;
+    font-size: 0.85rem;
+    border-right: none;
+  }
+  
+  .tab-icon {
+    font-size: 1.1rem;
+  }
+
+  .app-main {
+    padding: 0 1rem 3rem;
+    margin-top: 1.5rem;
+  }
+  
+  .whatsapp-float {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 1.25rem;
+  }
+  
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .meta-date {
+    display: none; /* Ocultar fecha en móviles muy pequeños */
+  }
+}
