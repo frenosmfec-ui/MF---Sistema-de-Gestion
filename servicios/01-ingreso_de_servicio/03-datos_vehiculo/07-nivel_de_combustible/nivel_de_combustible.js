@@ -1,0 +1,11 @@
+export function cargarCampoCombustible(contenedorId) {
+  return fetch('servicios/01-ingreso_de_servicio/03-datos_vehiculo/07-nivel_de_combustible/nivel_de_combustible.html')
+    .then(response => {
+      if (!response.ok) throw new Error('No se pudo cargar nivel_de_combustible');
+      return response.text();
+    })
+    .then(data => {
+      document.getElementById(contenedorId).innerHTML = data;
+    })
+    .catch(error => console.error('Error cargando nivel_de_combustible:', error));
+}

@@ -1,8 +1,12 @@
 // servicios/servicios.js
 import { db } from '../firebase/firebase.js';
 import { collection, addDoc, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-import { cargarFormularioIngreso, obtenerDatosIngreso, limpiarFormularioIngreso } from './01-ingreso_de_vehiculo/01-ingreso_de_vehiculo.js';
+
+// ✅ RUTAS CORREGIDAS (cambié 01-ingreso_de_vehiculo por 01-ingreso_de_servicio)
+import { cargarFormularioIngreso, obtenerDatosIngreso, limpiarFormularioIngreso } from './01-ingreso_de_servicio/ingreso_de_servicio.js';
 import { cargarSeccionMotivoVisita, obtenerDatosMotivoVisita, limpiarFormularioMotivoVisita } from './02-motivo_de_visita/02-motivo_de_visita.js';
+
+// ... el resto del archivo permanece igual ...
 
 // ==========================================
 // 1. CARGAR CSS DINÁMICAMENTE
