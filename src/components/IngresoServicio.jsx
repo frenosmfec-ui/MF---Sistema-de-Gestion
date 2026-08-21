@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Accordion from './Accordion';
+import SubSection from './SubSection';
 import './IngresoServicio.css';
 
 export default function IngresoServicio() {
-  // Estado para almacenar todos los datos del formulario
   const [formData, setFormData] = useState({
     fechaHora: new Date().toISOString().slice(0, 16),
     nombreCliente: '',
@@ -19,7 +19,6 @@ export default function IngresoServicio() {
     observaciones: ''
   });
 
-  // Función para actualizar campos
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -28,18 +27,24 @@ export default function IngresoServicio() {
     }));
   };
 
-  // Función para manejar el envío
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Datos del formulario:', formData);
-    // Aquí irá la lógica para guardar en Firebase
     alert('Formulario enviado (ver consola)');
   };
 
   return (
-    <Accordion title="1. Ingreso de Servicio" defaultOpen={true} icon="">
+    <Accordion 
+        title={
+          <>
+            1. Ingreso de <span className="highlight">Servicio</span>
+          </>
+        } 
+        defaultOpen={false} 
+        icon=""
+      >
       <form onSubmit={handleSubmit} className="form-ingreso">
-        {/* Campo Fecha y Hora */}
+        {/* Campo Fecha y Hora - Siempre visible cuando el acordeón principal está abierto */}
         <div className="form-group">
           <label htmlFor="fechaHora">
             <span className="field-icon">📅</span>
@@ -55,14 +60,11 @@ export default function IngresoServicio() {
           />
         </div>
 
-        {/* Datos del Cliente - Sub Acordeón */}
-        <Accordion title="👤 Datos del Cliente" defaultOpen={false}>
+        {/* Datos del Cliente - SubSección (empieza CERRADA) */}
+        <SubSection title={<>Datos del <span className="highlight">Cliente</span></>} defaultOpen={false} icon="👤">
           <div className="form-grid-cliente">
             <div className="form-group">
-              <label htmlFor="nombreCliente">
-                <span className="field-icon"></span>
-                Nombre del Cliente *
-              </label>
+              <label htmlFor="nombreCliente">Nombre del Cliente *</label>
               <input
                 type="text"
                 id="nombreCliente"
@@ -75,10 +77,7 @@ export default function IngresoServicio() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="telefonoCliente">
-                <span className="field-icon">📱</span>
-                Teléfono del Cliente *
-              </label>
+              <label htmlFor="telefonoCliente">Teléfono del Cliente *</label>
               <input
                 type="tel"
                 id="telefonoCliente"
@@ -93,7 +92,6 @@ export default function IngresoServicio() {
 
             <div className="form-group">
               <label htmlFor="emailCliente">
-                <span className="field-icon">✉️</span>
                 Email del Cliente
                 <span className="optional-badge">(Opcional)</span>
               </label>
@@ -107,16 +105,13 @@ export default function IngresoServicio() {
               />
             </div>
           </div>
-        </Accordion>
+        </SubSection>
 
-        {/* Datos del Vehículo - Sub Acordeón */}
-        <Accordion title=" Datos del Vehículo" defaultOpen={false}>
+        {/* Datos del Vehículo - SubSección (empieza CERRADA) */}
+        <SubSection title={<>Datos del <span className="highlight">Vehículo</span></>} defaultOpen={false} icon="🚗">
           <div className="form-grid-vehiculo">
             <div className="form-group">
-              <label htmlFor="tipoVehiculo">
-                <span className="field-icon">🚙</span>
-                Tipo de Vehículo *
-              </label>
+              <label htmlFor="tipoVehiculo">Tipo de Vehículo *</label>
               <select
                 id="tipoVehiculo"
                 name="tipoVehiculo"
@@ -137,10 +132,7 @@ export default function IngresoServicio() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="marcaVehiculo">
-                <span className="field-icon">🏭</span>
-                Marca del Vehículo *
-              </label>
+              <label htmlFor="marcaVehiculo">Marca del Vehículo *</label>
               <input
                 type="text"
                 id="marcaVehiculo"
@@ -153,10 +145,7 @@ export default function IngresoServicio() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="modeloVehiculo">
-                <span className="field-icon">🚘</span>
-                Modelo del Vehículo *
-              </label>
+              <label htmlFor="modeloVehiculo">Modelo del Vehículo *</label>
               <input
                 type="text"
                 id="modeloVehiculo"
@@ -169,10 +158,7 @@ export default function IngresoServicio() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="anioVehiculo">
-                <span className="field-icon">📆</span>
-                Año del Vehículo *
-              </label>
+              <label htmlFor="anioVehiculo">Año del Vehículo *</label>
               <input
                 type="number"
                 id="anioVehiculo"
@@ -187,10 +173,7 @@ export default function IngresoServicio() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="placa">
-                <span className="field-icon">🔢</span>
-                Placa / Patente *
-              </label>
+              <label htmlFor="placa">Placa / Patente *</label>
               <input
                 type="text"
                 id="placa"
@@ -204,10 +187,7 @@ export default function IngresoServicio() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="kilometraje">
-                <span className="field-icon">️</span>
-                Kilometraje Actual *
-              </label>
+              <label htmlFor="kilometraje">Kilometraje Actual *</label>
               <input
                 type="number"
                 id="kilometraje"
@@ -221,10 +201,7 @@ export default function IngresoServicio() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="combustible">
-                <span className="field-icon"></span>
-                Nivel de Combustible *
-              </label>
+              <label htmlFor="combustible">Nivel de Combustible *</label>
               <select
                 id="combustible"
                 name="combustible"
@@ -242,10 +219,7 @@ export default function IngresoServicio() {
             </div>
 
             <div className="form-group form-full">
-              <label htmlFor="observaciones">
-                <span className="field-icon">📝</span>
-                Observaciones Generales
-              </label>
+              <label htmlFor="observaciones">Observaciones Generales</label>
               <textarea
                 id="observaciones"
                 name="observaciones"
@@ -256,7 +230,7 @@ export default function IngresoServicio() {
               />
             </div>
           </div>
-        </Accordion>
+        </SubSection>
 
         {/* Botón de envío */}
         <button type="submit" className="btn-primary">

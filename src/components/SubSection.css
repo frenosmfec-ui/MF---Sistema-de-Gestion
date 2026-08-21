@@ -1,0 +1,106 @@
+/* =========================================================
+   MF - SubSection (Secciones internas mejoradas)
+   ========================================================= */
+
+.sub-section {
+  margin: 1.25rem 0;
+  border: 1px solid var(--color-gris-borde);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-blanco);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: box-shadow var(--transition-base);
+}
+
+.sub-section:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Header oscuro con degradado */
+.sub-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: linear-gradient(135deg, #2a2f33 0%, var(--color-grafito) 100%);
+  color: var(--color-blanco);
+  padding: 0.9rem 1.25rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-left: 4px solid var(--color-verde-mf);
+  transition: all var(--transition-fast);
+  user-select: none;
+  letter-spacing: 0.02em;
+}
+
+.sub-section-header:hover {
+  background: linear-gradient(135deg, var(--color-verde-oscuro) 0%, #2a2f33 100%);
+  border-left-width: 6px;
+}
+
+.sub-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.sub-icon {
+  font-size: 1.1rem;
+}
+
+/* Flecha que rota al abrir */
+.sub-toggle-icon {
+  font-size: 0.85rem;
+  color: var(--color-verde-mf);
+  transition: transform var(--transition-base);
+  font-weight: 700;
+}
+
+.sub-section.active .sub-toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* Contenido colapsable */
+.sub-section-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.25rem;
+  background: var(--color-gris-suave);
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.sub-section.active .sub-section-content {
+  max-height: 2000px;
+  padding: 1.25rem;
+}
+
+/* Grid interno */
+.sub-section .form-grid-cliente,
+.sub-section .form-grid-vehiculo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.sub-section .form-full {
+  grid-column: 1 / -1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sub-section .form-grid-cliente,
+  .sub-section .form-grid-vehiculo {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .sub-section-header {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .sub-section.active .sub-section-content {
+    padding: 1rem;
+  }
+}

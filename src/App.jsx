@@ -10,7 +10,7 @@ function App() {
       <Nav />
       
       <main className="app-main">
-        <h2>Registro de Servicio</h2>
+        <h2>Registro de <span className="highlight">Servicio</span></h2>
         <IngresoServicio />
       </main>
     </>

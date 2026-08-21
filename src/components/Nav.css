@@ -1,6 +1,5 @@
 /* =========================================================
-   MF - Mantenimiento en Frenos
-   Componente: Navegación por Pestañas
+   MF - Navegación por Pestañas
    ========================================================= */
 
 .tab-nav {
@@ -19,31 +18,27 @@
   display: flex;
   gap: 0;
   overflow-x: auto;
-  scrollbar-width: none; /* Oculta scrollbar en Firefox */
-  -ms-overflow-style: none; /* Oculta scrollbar en IE/Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .tab-nav-inner::-webkit-scrollbar {
-  display: none; /* Oculta scrollbar en Chrome/Safari */
+  display: none;
 }
 
 .tab-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  
   background: transparent;
   color: var(--color-gris-medio);
-  
   padding: 1.1rem 1.5rem;
   border-right: 1px solid var(--color-gris-borde);
   border-bottom: 3px solid transparent;
-  
   font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
   white-space: nowrap;
-  
   transition: all var(--transition-fast);
   position: relative;
 }
@@ -57,14 +52,12 @@
   background: var(--color-gris-suave);
 }
 
-/* Estado Activo */
 .tab-btn.active {
   color: var(--color-verde-oscuro);
   border-bottom-color: var(--color-verde-mf);
   background: rgba(37, 211, 102, 0.08);
 }
 
-/* Efecto de brillo sutil en la línea activa */
 .tab-btn.active::after {
   content: '';
   position: absolute;
@@ -76,7 +69,6 @@
   box-shadow: 0 -2px 8px rgba(37, 211, 102, 0.4);
 }
 
-/* Ícono de la pestaña */
 .tab-icon {
   font-size: 1.2rem;
   filter: grayscale(100%);
@@ -93,10 +85,7 @@
   letter-spacing: 0.02em;
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
+/* Responsive */
 @media (max-width: 768px) {
   .tab-nav-inner {
     padding: 0 1rem;
@@ -105,7 +94,7 @@
   .tab-btn {
     padding: 0.9rem 1.1rem;
     font-size: 0.85rem;
-    border-right: none; /* Quitamos separadores verticales en móvil */
+    border-right: none;
   }
   
   .tab-icon {

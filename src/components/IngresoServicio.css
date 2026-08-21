@@ -1,5 +1,5 @@
 /* =========================================================
-   MF - Componente: Ingreso de Servicio
+   MF - Ingreso de Servicio (Campos mejorados)
    ========================================================= */
 
 .form-ingreso {
@@ -8,45 +8,65 @@
   gap: 1.5rem;
 }
 
-.form-grid-cliente,
-.form-grid-vehiculo {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-}
-
-.form-full {
-  grid-column: 1 / -1;
-}
-
+/* ============================================
+   CAMPO INDIVIDUAL - Estilo tarjeta
+   ============================================ */
 .form-group {
   margin-bottom: 0;
+  background: var(--color-gris-suave);
+  border: 1px solid var(--color-gris-borde);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  transition: all var(--transition-fast);
 }
 
+.form-group:hover {
+  border-color: var(--color-verde-mf);
+  background: var(--color-blanco);
+}
+
+.form-group:focus-within {
+  border-color: var(--color-verde-mf);
+  background: var(--color-blanco);
+  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+}
+
+/* ============================================
+   LABEL - Destacado con borde izquierdo verde
+   ============================================ */
 .form-group label {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-grafito);
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding-left: 0.6rem;
+  border-left: 3px solid var(--color-verde-mf);
 }
 
 .field-icon {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .optional-badge {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   color: var(--color-gris-medio);
-  background: var(--color-gris-suave);
+  background: var(--color-gris-borde);
   padding: 0.15rem 0.5rem;
   border-radius: 999px;
   margin-left: 0.5rem;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
+/* ============================================
+   INPUTS - Con fondo sutil y efecto focus
+   ============================================ */
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -58,7 +78,13 @@
   color: var(--color-grafito);
   font-family: var(--font-primary);
   font-size: 1rem;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: all var(--transition-fast);
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: var(--color-gris-medio);
 }
 
 .form-group input:focus,
@@ -66,13 +92,15 @@
 .form-group textarea:focus {
   outline: none;
   border-color: var(--color-verde-mf);
+  background: var(--color-blanco);
   box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.15);
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: var(--color-gris-medio);
-  opacity: 0.7;
+  opacity: 0.6;
+  font-style: italic;
 }
 
 .form-group textarea {
@@ -81,34 +109,100 @@
   font-family: var(--font-primary);
 }
 
-/* Campos específicos */
+/* ============================================
+   CAMPOS ESPECÍFICOS
+   ============================================ */
 #placa {
   text-transform: uppercase;
   font-family: var(--font-mono);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  font-weight: 600;
 }
 
 #anioVehiculo,
 #kilometraje,
 #telefonoCliente {
   font-family: var(--font-mono);
+  letter-spacing: 0.05em;
 }
 
-/* Botón de envío */
+/* Select con flecha personalizada */
+.form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23171A1D' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+/* ============================================
+   BOTÓN DE ENVÍO
+   ============================================ */
 .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--color-verde-mf);
+  color: var(--color-grafito);
+  padding: 1rem 2rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
   align-self: flex-end;
   margin-top: 1rem;
+  border: none;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
-/* Responsive */
+.btn-primary:hover {
+  background: #20C45F;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  background: var(--color-gris-medio);
+  color: var(--color-blanco);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 @media (max-width: 768px) {
-  .form-grid-cliente,
-  .form-grid-vehiculo {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .form-group {
+    padding: 0.75rem;
+  }
+  
+  .form-group label {
+    font-size: 0.85rem;
+    padding-left: 0.5rem;
   }
   
   .btn-primary {
     align-self: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-group {
+    padding: 0.6rem;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.7rem 0.85rem;
+    font-size: 0.95rem;
   }
 }

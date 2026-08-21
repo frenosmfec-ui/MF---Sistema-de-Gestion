@@ -1,6 +1,5 @@
 /* =========================================================
-   MF - Mantenimiento en Frenos
-   Componente: Header Principal
+   MF - Header Principal
    ========================================================= */
 
 .app-header {
@@ -28,12 +27,10 @@
   gap: 1.5rem;
 }
 
-/* Logo SVG */
 .logo-icon {
   width: 48px;
   height: 48px;
   flex-shrink: 0;
-  position: relative;
 }
 
 .logo-icon svg {
@@ -42,7 +39,6 @@
   display: block;
 }
 
-/* Título MF con M blanca y F verde */
 .app-title {
   font-size: 2rem;
   font-weight: 900;
@@ -62,7 +58,6 @@
   text-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
 }
 
-/* Separador vertical verde */
 .title-separator {
   width: 3px;
   height: 40px;
@@ -72,7 +67,6 @@
   box-shadow: 0 0 10px rgba(37, 211, 102, 0.3);
 }
 
-/* Texto principal del negocio */
 .app-brand-text {
   display: flex;
   flex-direction: column;
@@ -101,7 +95,6 @@
   margin-top: 0.25rem;
 }
 
-/* Meta info (fecha y versión) */
 .header-meta {
   display: flex;
   align-items: center;
@@ -131,10 +124,7 @@
   box-shadow: 0 2px 10px rgba(37, 211, 102, 0.35);
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
+/* Responsive */
 @media (max-width: 992px) {
   .header-inner {
     flex-wrap: wrap;
@@ -148,13 +138,8 @@
     font-size: 1.75rem;
   }
   
-  .app-brand-main {
-    font-size: 1.3rem;
-  }
-  
-  .logo-icon {
-    width: 48px;
-    height: 48px;
+  .app-brand-text {
+    display: none;
   }
 }
 
@@ -218,11 +203,11 @@
   }
   
   .app-brand-text {
-    display: none; /* Ocultar texto completo en móviles muy pequeños */
+    display: none;
   }
   
   .meta-date {
-    display: none; /* Ocultar fecha en móviles muy pequeños */
+    display: none;
   }
   
   .meta-badge {

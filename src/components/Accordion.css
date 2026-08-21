@@ -1,5 +1,5 @@
 /* =========================================================
-   MF - Componente: Accordion Reutilizable
+   MF - Accordion Reutilizable
    ========================================================= */
 
 .section-accordion {
@@ -54,11 +54,12 @@
   max-height: 0;
   overflow: hidden;
   padding: 0 1.5rem;
+  background: var(--color-blanco);
   transition: max-height 0.3s ease, padding 0.3s ease;
 }
 
 .section-accordion.active .section-accordion-content {
-  max-height: 2000px;
+  max-height: 5000px;
   padding: 1.5rem;
 }
 
