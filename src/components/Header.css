@@ -40,8 +40,8 @@
 }
 
 .app-title {
-  font-size: 2rem;
-  font-weight: 900;
+  font-size: 3rem;
+  font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
   display: flex;
@@ -74,9 +74,9 @@
 }
 
 .app-brand-main {
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   line-height: 1.1;
   color: var(--color-blanco);
 }
