@@ -16,13 +16,13 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* Header oscuro con degradado */
+/* Header oscuro con degradado (ligeramente más claro que el acordeón principal) */
 .sub-section-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  background: linear-gradient(135deg, #2a2f33 0%, var(--color-grafito) 100%);
+  background: linear-gradient(135deg, #3a4146 0%, #4b5563 100%); /* Tono más claro */
   color: var(--color-blanco);
   padding: 0.9rem 1.25rem;
   cursor: pointer;
@@ -35,7 +35,7 @@
 }
 
 .sub-section-header:hover {
-  background: linear-gradient(135deg, var(--color-verde-oscuro) 0%, #2a2f33 100%);
+  background: linear-gradient(135deg, var(--color-verde-oscuro) 0%, #3a4146 100%);
   border-left-width: 6px;
 }
 
