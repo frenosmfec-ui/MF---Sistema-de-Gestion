@@ -30,16 +30,6 @@
   text-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
 }
 
-/* Badge decorativo en la esquina superior derecha */
-.app-main::before {
-  content: '🔧';
-  position: absolute;
-  top: 1.5rem;
-  right: 2rem;
-  font-size: 1.5rem;
-  opacity: 0.3;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
   .app-main {

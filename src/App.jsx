@@ -1,5 +1,6 @@
 import Header from './components/Header';
 import Nav from './components/Nav';
+import PageHeader from './components/PageHeader';
 import IngresoServicio from './components/IngresoServicio';
 import './App.css';
 
@@ -10,7 +11,11 @@ function App() {
       <Nav />
       
       <main className="app-main">
-        <h2>Registro de <span className="highlight">Servicio</span></h2>
+        <PageHeader 
+          title={<>Registro de <span className="highlight">Servicio</span></>}
+          subtitle="Ingrese los datos del vehículo y cliente"
+          icon="🔧"
+        />
         <IngresoServicio />
       </main>
     </>
