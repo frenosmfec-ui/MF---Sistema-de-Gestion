@@ -3,11 +3,12 @@ import Nav from './components/Nav';
 import PageHeader from './components/PageHeader';
 import IngresoServicio from './components/IngresoServicio';
 import TablaServicios from './components/TablaServicios';
+import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
 function App() {
   return (
-    <>
+    <ProtectedRoute>
       <Header />
       <Nav />
       
@@ -23,7 +24,7 @@ function App() {
         {/* Aquí se mostrará la tabla y se actualizará en tiempo real */}
         <TablaServicios />
       </main>
-    </>
+    </ProtectedRoute>
   );
 }
 

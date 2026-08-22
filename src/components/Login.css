@@ -1,0 +1,370 @@
+/* =========================================================
+   MF - Mantenimiento en Frenos
+   Componente: Login / Registro
+   ========================================================= */
+
+/* Contenedor principal - Pantalla completa con degradado */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-grafito) 0%, #2a2f33 100%);
+  padding: 1.5rem;
+}
+
+/* Tarjeta de login */
+.login-card {
+  background: var(--color-blanco);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 460px;
+  overflow: hidden;
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideIn {
+  from { 
+    transform: translateY(30px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+.login-header {
+  background: linear-gradient(135deg, var(--color-grafito) 0%, #2a2f33 100%);
+  color: var(--color-blanco);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-bottom: 4px solid var(--color-verde-mf);
+}
+
+.login-logo {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.logo-m {
+  color: var(--color-blanco);
+}
+
+.logo-f {
+  color: var(--color-verde-mf);
+  text-shadow: 0 0 25px rgba(37, 211, 102, 0.5);
+}
+
+.login-header h1 {
+  color: var(--color-blanco);
+  font-size: 1.5rem;
+  margin: 0.75rem 0 0.25rem 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.login-header p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  margin: 0;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ==========================================
+   TABS (Login / Registro)
+   ========================================== */
+.login-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--color-gris-borde);
+}
+
+.tab {
+  flex: 1;
+  padding: 1rem;
+  background: transparent;
+  border: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-gris-medio);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+
+.tab:hover {
+  color: var(--color-grafito);
+  background: var(--color-gris-suave);
+}
+
+.tab.active {
+  color: var(--color-verde-oscuro);
+  border-bottom-color: var(--color-verde-mf);
+  background: rgba(37, 211, 102, 0.06);
+}
+
+/* ==========================================
+   FORMULARIO Y CAMPOS
+   ========================================== */
+.login-form {
+  padding: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--color-grafito);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.icon {
+  font-size: 1.1rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 2px solid var(--color-gris-borde);
+  border-radius: var(--radius-sm);
+  background: var(--color-blanco);
+  color: var(--color-grafito);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-verde-mf);
+  box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.15);
+}
+
+.form-group input::placeholder {
+  color: var(--color-gris-medio);
+  opacity: 0.7;
+}
+
+/* ==========================================
+   MENSAJES DE ERROR
+   ========================================== */
+.error-message {
+  background: #FEF2F2;
+  color: var(--color-error);
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  margin: 1.5rem 2rem 0 2rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-left: 4px solid var(--color-error);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* ==========================================
+   BOTÓN GOOGLE
+   ========================================== */
+.btn-google {
+  width: calc(100% - 4rem);
+  margin: 1.5rem 2rem 0 2rem;
+  padding: 0.85rem 1rem;
+  background: var(--color-blanco);
+  color: var(--color-grafito);
+  border: 2px solid var(--color-gris-borde);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.btn-google:hover:not(:disabled) {
+  background: var(--color-gris-suave);
+  border-color: var(--color-gris-medio);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.btn-google:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ==========================================
+   DIVISOR "o"
+   ========================================== */
+.login-divider {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 2rem;
+  color: var(--color-gris-medio);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-gris-borde);
+}
+
+.login-divider span {
+  padding: 0 1rem;
+}
+
+/* ==========================================
+   BOTÓN PRINCIPAL (LOGIN / REGISTRO)
+   ========================================== */
+.btn-login {
+  width: 100%;
+  padding: 1rem;
+  background: var(--color-verde-mf);
+  color: var(--color-grafito);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  margin-top: 0.5rem;
+}
+
+.btn-login:hover:not(:disabled) {
+  background: #20C45F;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.btn-login:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-login:disabled {
+  background: var(--color-gris-medio);
+  color: var(--color-blanco);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Spinner de carga */
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid var(--color-grafito);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.login-footer {
+  background: var(--color-gris-suave);
+  padding: 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--color-gris-borde);
+}
+
+.login-footer p {
+  color: var(--color-gris-medio);
+  font-size: 0.85rem;
+  margin: 0.25rem 0;
+  font-weight: 500;
+}
+
+.login-footer .small {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================
+   RESPONSIVE (Móviles)
+   ========================================== */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 1rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+
+  .login-card {
+    border-radius: var(--radius-md);
+  }
+
+  .login-header {
+    padding: 2rem 1.5rem;
+  }
+
+  .login-logo {
+    font-size: 2.75rem;
+  }
+
+  .login-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .login-form {
+    padding: 1.5rem;
+  }
+
+  .btn-google {
+    width: 100%;
+    margin: 1.5rem 0 0 0;
+  }
+
+  .login-divider {
+    margin: 1.5rem 0;
+  }
+
+  .error-message {
+    margin: 1.5rem 1.5rem 0 1.5rem;
+  }
+}
