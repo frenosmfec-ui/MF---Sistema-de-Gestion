@@ -1,7 +1,34 @@
+import { useState, useEffect } from 'react';
+import { auth } from '../services/firebase';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import './Header.css';
 
 export default function Header() {
-  // Función para obtener la fecha formateada
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Escuchar cambios en la sesión (login / logout)
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  // Función para cerrar sesión
+  const handleLogout = async () => {
+    if (window.confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+      try {
+        await signOut(auth);
+        // El componente ProtectedRoute se encargará de mostrar el Login automáticamente
+      } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+        alert("Error al cerrar sesión");
+      }
+    }
+  };
+
   const obtenerFechaFormateada = () => {
     const opciones = { 
       weekday: 'long', 
@@ -12,11 +39,12 @@ export default function Header() {
     return new Date().toLocaleDateString('es-EC', opciones);
   };
 
+  if (loading) return null; // Evita parpadeos mientras carga
+
   return (
     <header className="app-header">
       <div className="header-inner">
         <div className="logo-block">
-          {/* Logo SVG */}
           <div className="logo-icon">
             <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="18" cy="18" r="16" stroke="white" strokeWidth="2.5"/>
@@ -29,16 +57,13 @@ export default function Header() {
             </svg>
           </div>
           
-          {/* Título MF */}
           <div className="app-title">
             <span className="m">M</span>
             <span className="f">F</span>
           </div>
           
-          {/* Separador */}
           <div className="title-separator"></div>
           
-          {/* Texto del negocio */}
           <div className="app-brand-text">
             <div className="app-brand-main">
               MANTENIMIENTO EN <span className="highlight">FRENOS</span>
@@ -47,9 +72,27 @@ export default function Header() {
           </div>
         </div>
         
-        {/* Meta info */}
         <div className="header-meta">
           <span className="meta-date">{obtenerFechaFormateada()}</span>
+          
+          {/* Sección del Usuario Logueado */}
+          {user && (
+            <div className="user-info-wrapper">
+              <div className="user-details">
+                {user.photoURL && (
+                  <img src={user.photoURL} alt="Avatar" className="user-avatar" />
+                )}
+                <div className="user-text">
+                  <span className="user-name">{user.displayName || 'Usuario'}</span>
+                  <span className="user-email">{user.email}</span>
+                </div>
+              </div>
+              <button className="btn-logout" onClick={handleLogout} title="Cerrar sesión">
+                🚪 Salir
+              </button>
+            </div>
+          )}
+          
           <span className="meta-badge">v1.0</span>
         </div>
       </div>

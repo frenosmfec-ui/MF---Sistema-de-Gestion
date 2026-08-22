@@ -215,3 +215,95 @@
     padding: 0.35rem 0.6rem;
   }
 }
+
+/* ==========================================
+   INFO DEL USUARIO Y LOGOUT (Agregar al final de Header.css)
+   ========================================== */
+
+.user-info-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.4rem 1rem 0.4rem 0.4rem;
+  border-radius: 50px; /* Forma de píldora */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--color-verde-mf);
+  object-fit: cover;
+}
+
+.user-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.user-name {
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  color: var(--color-blanco);
+  font-weight: 700;
+}
+
+.user-email {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-logout {
+  background: rgba(239, 68, 68, 0.15);
+  color: #FCA5A5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.btn-logout:hover {
+  background: rgba(239, 68, 68, 0.3);
+  border-color: rgba(239, 68, 68, 0.6);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .user-info-wrapper {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+  
+  .user-text {
+    display: none; /* Ocultar nombre/email en móviles muy pequeños para ahorrar espacio */
+  }
+  
+  .user-details {
+    gap: 0.5rem;
+  }
+  
+  .btn-logout {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}
