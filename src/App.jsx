@@ -2,6 +2,7 @@ import Header from './components/Header';
 import Nav from './components/Nav';
 import PageHeader from './components/PageHeader';
 import IngresoServicio from './components/IngresoServicio';
+import TablaServicios from './components/TablaServicios';
 import './App.css';
 
 function App() {
@@ -13,10 +14,14 @@ function App() {
       <main className="app-main">
         <PageHeader 
           title={<>Registro de <span className="highlight">Servicio</span></>}
-          subtitle="Ingrese los datos del vehículo y cliente"
+          subtitle="Complete los datos del vehículo y cliente"
           icon="🔧"
         />
+        
         <IngresoServicio />
+        
+        {/* Aquí se mostrará la tabla y se actualizará en tiempo real */}
+        <TablaServicios />
       </main>
     </>
   );

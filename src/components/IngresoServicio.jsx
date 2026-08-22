@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { db } from '../services/firebase'; // Asegúrate que esta ruta sea correcta
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import Accordion from './Accordion';
 import SubSection from './SubSection';
 
-// Rutas actualizadas según tus nuevas subcarpetas
+// Tus imports de componentes...
 import Fecha, { getLocalISOString } from './ingreso-servicio-jsx/fecha';
 import NombreCliente from './ingreso-servicio-jsx/datos-cliente/nombreCliente';
 import TelefonoCliente from './ingreso-servicio-jsx/datos-cliente/telefonoCliente';
@@ -39,23 +41,46 @@ export default function IngresoServicio() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Datos del formulario:', formData);
-    alert('Formulario enviado con éxito (ver consola)');
+    try {
+      // 1. Guardar en Firebase Firestore
+      await addDoc(collection(db, 'servicios'), {
+        ...formData,
+        createdAt: serverTimestamp() // Usa la hora del servidor para ordenar correctamente
+      });
+      
+      // 2. Éxito: Mostrar mensaje y limpiar formulario
+      alert('✅ Registro guardado exitosamente en la nube');
+      setFormData({
+        fechaHora: getLocalISOString(),
+        nombreCliente: '',
+        telefonoCliente: '',
+        emailCliente: '',
+        tipoVehiculo: '',
+        marcaVehiculo: '',
+        modeloVehiculo: '',
+        anioVehiculo: '',
+        placa: '',
+        kilometraje: '',
+        combustible: '',
+        observaciones: ''
+      });
+      
+    } catch (error) {
+      console.error('❌ Error al guardar:', error);
+      alert('Error al guardar el registro. Revisa la consola (F12).');
+    }
   };
 
   return (
     <Accordion 
       title={<>1. Ingreso de <span className="highlight">Servicio</span></>} 
-      defaultOpen={false}
+      defaultOpen={true} // Recomendado: que abra por defecto al cargar
     >
       <form onSubmit={handleSubmit} className="form-ingreso">
-        
-        {/* Fecha */}
         <Fecha formData={formData} handleChange={handleChange} />
 
-        {/* Cliente */}
         <SubSection title={<>Datos del <span className="highlight">Cliente</span></>} defaultOpen={false} icon="👤">
           <div className="form-grid-cliente">
             <NombreCliente formData={formData} handleChange={handleChange} />
@@ -64,7 +89,6 @@ export default function IngresoServicio() {
           </div>
         </SubSection>
 
-        {/* Vehículo */}
         <SubSection title={<>Datos del <span className="highlight">Vehículo</span></>} defaultOpen={false} icon="🚗">
           <div className="form-grid-vehiculo">
             <TipoVehiculo formData={formData} handleChange={handleChange} />
