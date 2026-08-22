@@ -3,9 +3,17 @@ import Accordion from './Accordion';
 import SubSection from './SubSection';
 import './IngresoServicio.css';
 
+// Función para obtener la fecha y hora local real sin desfases de UTC
+const getLocalISOString = () => {
+  const now = new Date();
+  const tzOffset = now.getTimezoneOffset() * 60000; // Desplazamiento en milisegundos
+  const localDate = new Date(now.getTime() - tzOffset);
+  return localDate.toISOString().slice(0, 16); // Formato: "YYYY-MM-DDTHH:mm"
+};
+
 export default function IngresoServicio() {
   const [formData, setFormData] = useState({
-    fechaHora: new Date().toISOString().slice(0, 16),
+    fechaHora: getLocalISOString(), // Usamos la función corregida aquí
     nombreCliente: '',
     telefonoCliente: '',
     emailCliente: '',
