@@ -1,19 +1,26 @@
 import { useState } from 'react';
 import Accordion from './Accordion';
 import SubSection from './SubSection';
-import './IngresoServicio.css';
 
-// Función para obtener la fecha y hora local real sin desfases de UTC
-const getLocalISOString = () => {
-  const now = new Date();
-  const tzOffset = now.getTimezoneOffset() * 60000; // Desplazamiento en milisegundos
-  const localDate = new Date(now.getTime() - tzOffset);
-  return localDate.toISOString().slice(0, 16); // Formato: "YYYY-MM-DDTHH:mm"
-};
+// Rutas actualizadas según tus nuevas subcarpetas
+import Fecha, { getLocalISOString } from './ingreso-servicio-jsx/fecha';
+import NombreCliente from './ingreso-servicio-jsx/datos-cliente/nombreCliente';
+import TelefonoCliente from './ingreso-servicio-jsx/datos-cliente/telefonoCliente';
+import EmailCliente from './ingreso-servicio-jsx/datos-cliente/emailCliente';
+import TipoVehiculo from './ingreso-servicio-jsx/datos-vehiculo/tipoVehiculo';
+import MarcaVehiculo from './ingreso-servicio-jsx/datos-vehiculo/marcaVehiculo';
+import ModeloVehiculo from './ingreso-servicio-jsx/datos-vehiculo/modeloVehiculo';
+import AnioVehiculo from './ingreso-servicio-jsx/datos-vehiculo/anioVehiculo';
+import Placa from './ingreso-servicio-jsx/datos-vehiculo/placa';
+import Kilometraje from './ingreso-servicio-jsx/datos-vehiculo/kilometraje';
+import Combustible from './ingreso-servicio-jsx/datos-vehiculo/combustible';
+import Observaciones from './ingreso-servicio-jsx/datos-vehiculo/observaciones';
+
+import './IngresoServicio.css';
 
 export default function IngresoServicio() {
   const [formData, setFormData] = useState({
-    fechaHora: getLocalISOString(), // Usamos la función corregida aquí
+    fechaHora: getLocalISOString(),
     nombreCliente: '',
     telefonoCliente: '',
     emailCliente: '',
@@ -29,218 +36,48 @@ export default function IngresoServicio() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Datos del formulario:', formData);
-    alert('Formulario enviado (ver consola)');
+    alert('Formulario enviado con éxito (ver consola)');
   };
 
   return (
     <Accordion 
-        title={
-          <>
-            1. Ingreso de <span className="highlight">Servicio</span>
-          </>
-        } 
-        defaultOpen={false} 
-        icon=""
-      >
+      title={<>1. Ingreso de <span className="highlight">Servicio</span></>} 
+      defaultOpen={false}
+    >
       <form onSubmit={handleSubmit} className="form-ingreso">
-        {/* Campo Fecha y Hora - Siempre visible cuando el acordeón principal está abierto */}
-        <div className="form-group">
-          <label htmlFor="fechaHora">
-            <span className="field-icon">📅</span>
-            Fecha y Hora de Ingreso *
-          </label>
-          <input
-            type="datetime-local"
-            id="fechaHora"
-            name="fechaHora"
-            value={formData.fechaHora}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        
+        {/* Fecha */}
+        <Fecha formData={formData} handleChange={handleChange} />
 
-        {/* Datos del Cliente - SubSección (empieza CERRADA) */}
+        {/* Cliente */}
         <SubSection title={<>Datos del <span className="highlight">Cliente</span></>} defaultOpen={false} icon="👤">
           <div className="form-grid-cliente">
-            <div className="form-group">
-              <label htmlFor="nombreCliente">Nombre del Cliente *</label>
-              <input
-                type="text"
-                id="nombreCliente"
-                name="nombreCliente"
-                value={formData.nombreCliente}
-                onChange={handleChange}
-                placeholder="Ej: Juan Pérez"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="telefonoCliente">Teléfono del Cliente *</label>
-              <input
-                type="tel"
-                id="telefonoCliente"
-                name="telefonoCliente"
-                value={formData.telefonoCliente}
-                onChange={handleChange}
-                placeholder="Ej: 0998123456"
-                pattern="[0-9]{10}"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="emailCliente">
-                Email del Cliente
-                <span className="optional-badge">(Opcional)</span>
-              </label>
-              <input
-                type="email"
-                id="emailCliente"
-                name="emailCliente"
-                value={formData.emailCliente}
-                onChange={handleChange}
-                placeholder="ejemplo@correo.com"
-              />
-            </div>
+            <NombreCliente formData={formData} handleChange={handleChange} />
+            <TelefonoCliente formData={formData} handleChange={handleChange} />
+            <EmailCliente formData={formData} handleChange={handleChange} />
           </div>
         </SubSection>
 
-        {/* Datos del Vehículo - SubSección (empieza CERRADA) */}
+        {/* Vehículo */}
         <SubSection title={<>Datos del <span className="highlight">Vehículo</span></>} defaultOpen={false} icon="🚗">
           <div className="form-grid-vehiculo">
-            <div className="form-group">
-              <label htmlFor="tipoVehiculo">Tipo de Vehículo *</label>
-              <select
-                id="tipoVehiculo"
-                name="tipoVehiculo"
-                value={formData.tipoVehiculo}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Seleccionar...</option>
-                <option value="Sedán">Sedán</option>
-                <option value="SUV">SUV</option>
-                <option value="Camioneta">Camioneta</option>
-                <option value="Hatchback">Hatchback</option>
-                <option value="Coupé">Coupé</option>
-                <option value="Pick-up">Pick-up</option>
-                <option value="Van">Van</option>
-                <option value="Otro">Otro</option>
-              </select>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="marcaVehiculo">Marca del Vehículo *</label>
-              <input
-                type="text"
-                id="marcaVehiculo"
-                name="marcaVehiculo"
-                value={formData.marcaVehiculo}
-                onChange={handleChange}
-                placeholder="Ej: Toyota, Chevrolet"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="modeloVehiculo">Modelo del Vehículo *</label>
-              <input
-                type="text"
-                id="modeloVehiculo"
-                name="modeloVehiculo"
-                value={formData.modeloVehiculo}
-                onChange={handleChange}
-                placeholder="Ej: Corolla, Spark"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="anioVehiculo">Año del Vehículo *</label>
-              <input
-                type="number"
-                id="anioVehiculo"
-                name="anioVehiculo"
-                value={formData.anioVehiculo}
-                onChange={handleChange}
-                placeholder="Ej: 2020"
-                min="1990"
-                max="2030"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="placa">Placa / Patente *</label>
-              <input
-                type="text"
-                id="placa"
-                name="placa"
-                value={formData.placa}
-                onChange={handleChange}
-                placeholder="Ej: ABC-1234"
-                style={{ textTransform: 'uppercase' }}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="kilometraje">Kilometraje Actual *</label>
-              <input
-                type="number"
-                id="kilometraje"
-                name="kilometraje"
-                value={formData.kilometraje}
-                onChange={handleChange}
-                placeholder="Ej: 45000"
-                min="0"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="combustible">Nivel de Combustible *</label>
-              <select
-                id="combustible"
-                name="combustible"
-                value={formData.combustible}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Seleccionar...</option>
-                <option value="Vacío">Vacío</option>
-                <option value="1/4">1/4</option>
-                <option value="1/2">1/2</option>
-                <option value="3/4">3/4</option>
-                <option value="Lleno">Lleno</option>
-              </select>
-            </div>
-
-            <div className="form-group form-full">
-              <label htmlFor="observaciones">Observaciones Generales</label>
-              <textarea
-                id="observaciones"
-                name="observaciones"
-                value={formData.observaciones}
-                onChange={handleChange}
-                rows="3"
-                placeholder="Rayones, golpes previos, estado general..."
-              />
-            </div>
+            <TipoVehiculo formData={formData} handleChange={handleChange} />
+            <MarcaVehiculo formData={formData} handleChange={handleChange} />
+            <ModeloVehiculo formData={formData} handleChange={handleChange} />
+            <AnioVehiculo formData={formData} handleChange={handleChange} />
+            <Placa formData={formData} handleChange={handleChange} />
+            <Kilometraje formData={formData} handleChange={handleChange} />
+            <Combustible formData={formData} handleChange={handleChange} />
+            <Observaciones formData={formData} handleChange={handleChange} />
           </div>
         </SubSection>
 
-        {/* Botón de envío */}
         <button type="submit" className="btn-primary">
           💾 Guardar Registro
         </button>
